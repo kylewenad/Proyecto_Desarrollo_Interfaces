@@ -1,7 +1,20 @@
 :root{
-    --a:#F2E205;
-    --b:#401B0E;
-    --c:#8C472E;
-    --d:#F20505;
-    --e:#0D0D0D;
+      /* Fondos (Backgrounds) */
+  --bg-primary: #121212;       /* Fondo principal de la web */
+  --bg-surface: #1e1e1e;       /* Fondo de tarjetas, contenedores y login */
+  --bg-navbar: #1a1a1a;        /* Fondo sutilmente diferenciado para la barra superior */
+ 
+  /* Colores de Acento (Dorados Premium) */
+  --gold-primary: #dfba6b;     /* Dorado principal para textos importantes y botones */
+  --gold-gradient: linear-gradient(135deg, #f3e0aa 0%, #d4af37 50%, #aa7c11 100%); /* Degradado para botones y el logo Z */
+  --gold-glow: rgba(223, 186, 107, 0.15); /* Resplandor suave para efectos hover */
+ 
+  /* Textos (Typography Colors) */
+  --text-main: #ffffff;        /* Blanco puro para títulos y lecturas principales */
+  --text-muted: #a0a0a0;       /* Gris suave para descripciones secundarias y etiquetas de formulario */
+  --text-dark: #121212;        /* Texto oscuro para usar encima de los botones dorados */
+ 
+  /* Bordes y Líneas */
+  --border-color: #2a2a2a;     /* Líneas divisorias finas y bordes de inputs */
+  --border-gold: #dfba6b4d;    /* Borde dorado con opacidad para destacar elementos seleccionados */
 }
