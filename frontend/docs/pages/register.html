@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="onlineShop" />
+    <meta name="keywords" content="onlineShop" />
+    <link rel="icon" href="../assets/logo_navbar.jpg" type="image/png">
+    <title>ZAPSTEP-Register</title>
+
+  </head>
+
+  <body>
+    <header class="header">
+      
+    </header>
+
+    <main class="register">
+      <section class="register__section">
+        <div class="register__container">
+          <header class="register__header">
+            <h1 class="register__title">Regístrate</h1>
+
+            <p class="register__subtitle">
+              Crea una nueva cuenta en el sistema
+            </p>
+          </header>
+
+          <form class="register__form" id="registerForm">
+            <!-- Nombre -->
+
+            <div class="register__input-wrapper">
+              <i class="fa-solid fa-user"></i>
+
+              <input
+                class="register__input"
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Introduce tu nombre"
+                required
+              />
+            </div>
+
+            <!-- Email -->
+
+            <div class="register__input-wrapper">
+              <i class="fa-solid fa-envelope"></i>
+
+              <input
+                class="register__input"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Introduce tu email"
+                required
+              />
+            </div>
+
+            <!-- Password -->
+
+            <div class="register__input-wrapper">
+              <i class="fa-solid fa-lock"></i>
+
+              <input
+                class="register__input"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Introduce tu contraseña"
+                required
+              />
+            </div>
+
+            <button class="register__button" type="submit">Crear cuenta</button>
+
+            <p class="login__register">
+              ¿Ya tienes cuenta?
+
+              <a class="register__login-link" href="login.html">
+                Inicia sesión aquí
+              </a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+   
+  </body>
+</html>
