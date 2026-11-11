@@ -193,5 +193,135 @@ db.zapatos.insertMany([
         { talla: 39, cantidad: 11 },
         { talla: 40, cantidad: 9 }
     ]
+},
+{
+    _id: 16,
+    nombre: "Running Max",
+    tipo: "Hombre",
+    precio: 69.99,
+    stock: [
+        { talla: 40, cantidad: 8 },
+        { talla: 41, cantidad: 10 },
+        { talla: 42, cantidad: 12 },
+        { talla: 43, cantidad: 9 },
+        { talla: 44, cantidad: 7 }
+    ]
+},
+{
+    _id: 17,
+    nombre: "Business Classic",
+    tipo: "Hombre",
+    precio: 79.99,
+    stock: [
+        { talla: 40, cantidad: 6 },
+        { talla: 41, cantidad: 8 },
+        { talla: 42, cantidad: 10 },
+        { talla: 43, cantidad: 7 },
+        { talla: 44, cantidad: 5 }
+    ]
+},
+{
+    _id: 18,
+    nombre: "Casual Street",
+    tipo: "Hombre",
+    precio: 54.99,
+    stock: [
+        { talla: 40, cantidad: 10 },
+        { talla: 41, cantidad: 9 },
+        { talla: 42, cantidad: 11 },
+        { talla: 43, cantidad: 8 },
+        { talla: 44, cantidad: 7 }
+    ]
+},
+{
+    _id: 19,
+    nombre: "Sport Runner",
+    tipo: "Hombre",
+    precio: 64.99,
+    stock: [
+        { talla: 40, cantidad: 7 },
+        { talla: 41, cantidad: 8 },
+        { talla: 42, cantidad: 12 },
+        { talla: 43, cantidad: 10 },
+        { talla: 44, cantidad: 6 }
+    ]
+},
+{
+    _id: 20,
+    nombre: "Bota Trekking",
+    tipo: "Hombre",
+    precio: 89.99,
+    stock: [
+        { talla: 40, cantidad: 5 },
+        { talla: 41, cantidad: 7 },
+        { talla: 42, cantidad: 9 },
+        { talla: 43, cantidad: 8 },
+        { talla: 44, cantidad: 6 }
+    ]
+},
+{
+    _id: 21,
+    nombre: "Sneaker White",
+    tipo: "Hombre",
+    precio: 59.99,
+    stock: [
+        { talla: 40, cantidad: 12 },
+        { talla: 41, cantidad: 10 },
+        { talla: 42, cantidad: 8 },
+        { talla: 43, cantidad: 7 },
+        { talla: 44, cantidad: 5 }
+    ]
+},
+{
+    _id: 22,
+    nombre: "Urban Leather",
+    tipo: "Hombre",
+    precio: 74.99,
+    stock: [
+        { talla: 40, cantidad: 6 },
+        { talla: 41, cantidad: 9 },
+        { talla: 42, cantidad: 11 },
+        { talla: 43, cantidad: 10 },
+        { talla: 44, cantidad: 8 }
+    ]
+},
+{
+    _id: 23,
+    nombre: "Mocasin Premium",
+    tipo: "Hombre",
+    precio: 72.99,
+    stock: [
+        { talla: 40, cantidad: 5 },
+        { talla: 41, cantidad: 8 },
+        { talla: 42, cantidad: 9 },
+        { talla: 43, cantidad: 11 },
+        { talla: 44, cantidad: 7 }
+    ]
+},
+{
+    _id: 24,
+    nombre: "Outdoor Adventure",
+    tipo: "Hombre",
+    precio: 94.99,
+    stock: [
+        { talla: 40, cantidad: 7 },
+        { talla: 41, cantidad: 6 },
+        { talla: 42, cantidad: 10 },
+        { talla: 43, cantidad: 12 },
+        { talla: 44, cantidad: 9 }
+    ]
+},
+{
+    _id: 25,
+    nombre: "Classic Brown",
+    tipo: "Hombre",
+    precio: 68.99,
+    stock: [
+        { talla: 40, cantidad: 8 },
+        { talla: 41, cantidad: 7 },
+        { talla: 42, cantidad: 10 },
+        { talla: 43, cantidad: 9 },
+        { talla: 44, cantidad: 6 }
+    ]
 }
 ]);
