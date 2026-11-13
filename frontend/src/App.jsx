@@ -2,7 +2,7 @@ import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
-import './App.css'
+//import './App.css'
 import Navbar from './components/Navbar.jsx'
 import logo from './assets/logoZapstep.jpg';
 
@@ -11,14 +11,12 @@ import logo from './assets/logoZapstep.jpg';
 export default function App()
 { 
   return (
-
+    
     <header>
       <img src={logo} alt="Logo del proyecto" className="img-fluid my-3" style={{ maxWidth: '300px' }} />
       
       <Navbar/>
     </header>
-
-    
 
     
   )
