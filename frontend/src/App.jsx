@@ -2,9 +2,10 @@
 import { useState } from 'react'
 import './App.css'
 import './styles/global.css'
-import Navbar from './components/Navbar.jsx'
+import Navbar from './components/Navbar'
 import Footer from './components/Footer.jsx'
-
+import hero from './assets/Designer.png'
+import ProductsCarrousel from './components/ProductsCarrousel'
 
 // 2. COMPONENTE PRINCIPAL
 //function App() 
@@ -21,7 +22,7 @@ export default function App()
 
    
     <section className="hero">
-        <div className="hero_content">
+        <div className="hero_content" img src={hero} >
             <h1 className="hero_title">
                 ELEVATED STEPS.
                 UNCOMPROMISING STYLE.
@@ -31,6 +32,12 @@ export default function App()
             </div>
         </div>
     </section>
+
+   
+      <ProductsCarrousel/>
+
+
+  
 
     <footer>
        

@@ -1,4 +1,4 @@
-import logo from '../assets/logoZapstep.jpg';
+import logo from '../assets/zapstepLogo.png';
 
 export default function Navbar() {
   return (
