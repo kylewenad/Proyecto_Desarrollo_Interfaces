@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+export default function NewArrivals() {
+  return <h1>Página de New Arrivals</h1>;
+}
+
+
+/*<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -109,4 +114,4 @@
     </footer>
 
     </body>
-</html>
+</html>*/
