@@ -1,14 +1,26 @@
-<!DOCTYPE html>
-    <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-            <meta name="description" content="onlineShop"/>
-            <meta name="keywords" content="onlineShop"/>
-            <link rel="icon" href="../assets/logo_navbar.jpg" type="image/png">
-            <title>ZAPSTEP-Login</title>
-        </head>
-        <body>
+import { useState } from 'react'
+import './App.css'
+import './styles/global.css'
+import Form from '../components/form'
+import Footer from './components/Footer.jsx'
+import Navbar from './components/Navbar'
+
+export default function Login(){
+    return(
+        <>
+        <header>
+            <Navbar/>
+        </header>
+
+        <Form/>
+
+        <footer>
+            <Footer/>
+        </footer>
+        </>
+    )
+}
+        /*<body>
             <header>
 
             </header>
@@ -81,4 +93,4 @@
 
 </body>
 
-</html>
+</html>*/
