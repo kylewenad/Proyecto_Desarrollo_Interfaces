@@ -1,6 +1,6 @@
 body {
   background-color: var(--bg-primary);
-  color: #ffffff; /* Recomendado para que el texto sea legible */
+  color: #ffffff;
   margin: 0;
 }
 
@@ -54,7 +54,7 @@ nav a:hover {
     background:
     linear-gradient(rgba(0,0,0,.35),
     rgba(0,0,0,.35)),
-    url("../assets/banner_hombre.jpg");
+    url("../assets/Designer.png");
 
     background-size:cover;
     background-position:center;
@@ -87,6 +87,7 @@ nav a:hover {
     background:#d4af37;
     color:black;
 }
+
 
 /* CATEGORIAS */
 
@@ -131,44 +132,116 @@ nav a:hover {
 
 /* PRODUCTOS */
 
-.productos{
-    padding:80px 10%;
+
+/*CARROUSEL----------------------------------------------*/
+/*SECTION PARTNERS*/
+.products{
+  text-align:center;
+  padding:100px 20px;
+  background: var(--bg-surface);
+}
+/* TITULO */
+
+.products__title{
+  font-family:"Montserrat", sans-serif;
+  color:#ffffff;
+  font-size:26px;
+  margin-bottom:10px;
 }
 
-.productos h2{
-    text-align:center;
-    margin-bottom:50px;
-    font-size:2rem;
+/* SUBTITULO */
+
+.products__subtitle{
+  font-family:"Poppins", sans-serif;
+  color:#ffffff;
+  margin-bottom:40px;
 }
 
-.fila-productos{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:30px;
+/* CONTENEDOR */
+
+.products__container{
+  position:relative;
+  max-width:1100px;
+  margin:auto;
+
 }
 
-.producto{
-    width:220px;
-    text-align:center;
+/* CAROUSEL */
+
+.products__carousel{
+  overflow:hidden;
+  margin-top:40px;
 }
 
-.producto img{
-    width:100%;
-    transition:.4s;
+/* TRACK */
+
+.products__track{
+  display: flex;
+  transition: transform 0.4s ease-in-out; /* Hace que el movimiento sea suave */
+  will-change: transform;
 }
 
-.producto img:hover{
-    transform:scale(1.1);
+/* LOGOS */
+
+.products__logo{
+  flex: 0 0 25%; /* Por defecto en escritorio: ocupa exactamente el 25% (4 elementos a la vez) */
+  max-width: 25%;
+  box-sizing: border-box;
 }
 
-.flecha{
-    background:none;
-    border:none;
-    color:#d4af37;
-    font-size:40px;
-    cursor:pointer;
+.products__logo img{
+  height:90px;
+  width:auto;
+  object-fit:contain;
+
+  padding:18px;
+  border-radius:14px;
+
+  transition:transform .3s ease, opacity .3s ease;
 }
+.products__logo img:hover{
+  transform:scale(1.1);
+  opacity:1;
+}
+
+/* BOTONES */
+
+.products__btn{
+
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+
+  width:48px;
+  height:48px;
+
+  border:none;
+  border-radius:50%;
+
+  color:white;
+
+  font-size:22px;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index: 2;
+
+}
+
+.products__btn *{
+  pointer-events:none;
+}
+
+.prev{
+  left:-10px;
+}
+
+.next{
+  right:-10px;
+}
+/*FIN CARROUSEL--------------------------------------------*/
 
 /* FOOTER */
 
