@@ -5,6 +5,7 @@ import { BrowserRouter, NavLink, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Login from './pages/Login';
+import Products from './pages/Products';
 
 import './App.css';
 import './styles/global.css';
@@ -18,6 +19,7 @@ export default function App() {
       
       <Route path="/About" element={<About />} /> 
       <Route path="/Login" element={<Login />} /> 
+      <Route path="/Products" element={<Products/>}/>
 </Routes>
 )
 }
