@@ -6,6 +6,17 @@ Fronted:
     Arrancar el proyecto:
     - npm run dev
 
+    - src
+        assets
+        css
+        components
+        context
+        pages
+        routes
+        services
+        styles
+
+
     Enrutador:
     - npm install react router dom
         En app.jsx:
