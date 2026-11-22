@@ -1,0 +1,178 @@
+.register{
+    height: calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    background-image: url("../../assets/mocasines.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    position:relative;
+}
+
+.register::before{
+    content:"";
+    position:absolute;
+    inset:0; 
+    z-index:0;
+}
+
+/* CONTAINER */
+.register__container{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:420px;
+    padding:20px;
+    border-radius:12px;
+    background:var(--bg-surface);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--border-gold);
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+    color: var(--text-);
+} 
+
+/* HEADER */
+.register__header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.register__title{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.register__subtitle{
+    font-size:14px;
+}
+
+.register__form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    max-width: 420px;
+}
+
+.register__input-wrapper{
+    display:flex;
+    align-items:center;
+    border-radius:8px;
+    padding:12px;
+    border:1px solid var(--border-gold);
+    transition:all .25s ease;
+}
+
+.register__input-wrapper:focus-within{
+    border:1px solid var(--border-gold);
+    box-shadow:var(--gold-glow);
+}
+
+/* INPUT */
+.register__input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:white;
+    font-size:14px;
+}
+
+
+/* BUTTON */
+
+.register__button{
+    margin:20px;
+    padding:14px;
+
+    border:none;
+    border-radius:8px;
+
+    background:var(--gold-gradient);
+
+    color:var(--text-dark);
+ 
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+.register__button:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--gold-glow);
+}
+
+/* LOGIN LINK */
+.login__register{
+    margin-top:12px;
+    text-align:center;
+    font-size:14px;
+    color:#c7c7c7;
+}
+
+.register__login-link{
+    color:var(--gold-primary);
+    text-decoration:none;
+    font-weight:500;
+}
+
+.register__login-link:hover{
+    text-decoration:underline;
+}
+
+
+/* TABLET */
+
+@media (min-width:768px){
+
+.register__container{
+
+max-width:420px;
+
+}
+
+}
+
+/* DESKTOP */
+
+@media (min-width:1024px){
+
+.register__container{
+
+max-width:420px;   
+padding:50px;      
+border-radius:14px;
+
+}
+
+.register__title{
+
+font-size:32px;
+
+}
+
+.register__subtitle{
+
+font-size:16px;
+
+}
+
+.register__form{
+
+gap:20px;
+
+}
+
+.register__input-wrapper{
+
+padding:14px;
+
+}
+
+}
