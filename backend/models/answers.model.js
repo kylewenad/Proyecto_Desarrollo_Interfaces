@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 
-const answerSchema = new.mongoose.Schema(
+const answerSchema = new mongoose.Schema(
     {
         ticket: {
             type: mongoose.Schema.Types.ObjectId,

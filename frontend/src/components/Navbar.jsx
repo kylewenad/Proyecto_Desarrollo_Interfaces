@@ -1,23 +1,21 @@
 import logo from '../assets/zapstepLogo.png';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../styles/components/navbar.css";
+
 
 export default function Navbar() {
   return (
     <>
     <header>
-      <a href="#">
-       <img src={logo} alt="Logo del proyecto" className="navbar-logo" />     
-      </a>
-      <nav className='nav-link'>
-        <Link to="/">Home</Link> {" | "}
-        <Link to="/Products">Productos</Link>{" | "}
-        <Link to="/NewArrivals">New Arrivals</Link>{" | "}
-        <Link to="/About">About</Link>{" | "}
-        <Link to="/Register">Registro</Link>{" | "}
-        <Link to="/Login">Login</Link>
-        
+      <img src={logo} alt="Logo de ZapStep" className="navbar-logo" />     
+      <nav>
+        <NavLink end to="/">Home</NavLink>{' | '}
+        <NavLink to="/Products">Productos</NavLink>{' | '}
+        <NavLink to="/NewArrivals">New Arrivals</NavLink>{' | '}
+        <NavLink to="/About">About</NavLink>{' | '}
+        <NavLink to="/Login">Login</NavLink>        
       </nav>
-</header>
+    </header>
     </>
   )
 }

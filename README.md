@@ -42,3 +42,5 @@ Backend:
     - npm init -y
     - npm install express
     - node
+
+    npx nodemon

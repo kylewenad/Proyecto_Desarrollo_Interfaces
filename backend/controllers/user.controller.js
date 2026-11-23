@@ -1,20 +1,35 @@
-const Usuario = require("../models/user.model")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+const Usuario = require("../models/user.model" ) ;
+const jwt = require ("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 class UsuarioController{
     async signUp(req,res)  {
-        const passwordEncriptado = await bcrypt.hash(req.body.password,10);
+        
+        try{
+            console.log(req.body);
+            const passwordEncriptado = await bcrypt.hash(req.body.password, 10);
 
-        const usuario = new Usuario({
-            username: req.body.username,
-            password: passwordEncriptado,
-            rol: req.body.rol
-        })
+            const usuario = new Usuario({
+                username: req.body.username,
+                email: req.body.email,
+                password: passwordEncriptado,
+            
+                //rol: req.body.rol
+            })   
+                
+                const result = await usuario.save();
+                console.log("Usuario creado:", result);
+                
+                return res.status(201).send("Usuario resgistrado correctamente 😊👍");
+    
+        } catch (error) {
 
-        const result= await usuario.save();
-        return res.status(201).send("Usuario resgistrado correctamente 😊👍");
+            console.error("Fallo al crear usuario.", error);
+            return res.status(500).json({ error: "Error interno del servidor al insertar." });
+        }      
+            
     }
 }
 
-module.exports= new UsuarioController();
+
+module.exports = new UsuarioController();
