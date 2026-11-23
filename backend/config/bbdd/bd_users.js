@@ -1,15 +1,6 @@
-db.zapatos.insertMany([
-    {
-        username:"",
-        email:"",
-        password:""/*,
-        rol: {
-            type: String,
-            required: true,
-            trim: true,
-            enum: ["CLIENTE", "SOPORTE", "ADMINISTRADOR"]
-        },*/
-    }
-]);
-
-module.exports = users;
+db.users.insertOne({
+    username: "admin",
+    email: "admin@test.com",
+    password: "contraseña_encriptada",
+    rol: "ADMINISTRADOR"
+});

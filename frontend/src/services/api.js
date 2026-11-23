@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'; 
+const BASE = '';
 
 export async function apiGet(path){ 
     const res = await fetch(`${BASE}${path}`); 
@@ -7,9 +7,11 @@ export async function apiGet(path){
 } 
 
 export async function apiPost(path, body){ 
-    const res = await fetch(`${BASE}${path}`, { 
+    const res = await fetch(`${BASE}${path}`, {
         method: 'POST', 
-        headers: {'Content-Type': 'application/json'}, 
+        headers: {
+            'Content-Type':'application/json' 
+        },
         body: JSON.stringify(body) 
     }); 
     
