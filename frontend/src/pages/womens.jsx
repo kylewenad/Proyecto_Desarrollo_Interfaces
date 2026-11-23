@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"content="width=device-width,initial-scale=1">
-        <title>ZAPSTEP - Womens </title>
-        <meta name="description" content="Zapatos de hombre" />
-        <link rel="stylesheet" href="../ccs/pages/mens.css"/>
-    </head>
-    <body>
-        <!-- HEADER -->
-    <header>
-        <img src="../assets/zapstepLogo.png" alt="Logo">
-
-        <nav>
-            <a href="#">HOME</a>
-            <a href="../pages/mens.html">MEN'S</a>
-            <a href="../pages/womens.html">WOMEN'S</a>
-            <a href="../pages/newArrivals.html">NEW ARRIVALS</a>
-            <a href="../pages/newArrivals.html">ABOUT US</a>
-            <a href="#">LOGIN</a>
-        </nav>
-    </header>
-
-    <!-- HERO -->
+export default function Womens() {
+  return (
+    <>
     <section class="hero">
         <div class="hero_content">
             <h1 class="hero_title">
@@ -34,7 +12,6 @@
         </div>
     </section>
 
-    <!-- CATEGORIAS -->
     <section class="categorias">
 
         <h2>CATEGORIAS DESTACADAS</h2>
@@ -42,17 +19,17 @@
         <div class="contenedor-categorias">
 
             <article class="categoria">
-                <img src="../assets/tacones_elegantes.jpg" alt="tacones mujer">
+                <img src="../assets/tacones_elegantes.jpg" alt="tacones mujer"/>
                 <h3>TACONES</h3>
             </article>
 
             <article class="categoria">
-                <img src="../assets/botas_mujer.jpg" alt="deportivas hombre">
+                <img src="../assets/botas_mujer.jpg" alt="deportivas hombre"/>
                 <h3>BOTAS</h3>
             </article>
 
             <article class="categoria">
-                <img src="../assets/casual.jpg" alt="">
+                <img src="../assets/casual.jpg" alt=""/>
                 <h3>CASUALES</h3>
             </article>
 
@@ -60,7 +37,7 @@
 
     </section>
 
-    <!-- PRODUCTOS -->
+
     <section class="productos">
 
         <h2>FAVORITOS</h2>
@@ -68,26 +45,25 @@
         <div class="fila-productos">
 
             <div class="producto">
-                <img src="../assets/heels.png" alt="">
+                <img src="../assets/heels.png" alt=""/>
             </div>
 
             <div class="producto">
-                <img src="../assets/bota_lujo.png" alt="">
+                <img src="../assets/bota_lujo.png" alt=""/>
             </div>
 
             <div class="producto">
-                <img src="../assets/sneaker_mujer.png" alt="">
+                <img src="../assets/sneaker_mujer.png" alt=""/>
             </div>
 
             <div class="producto">
-                <img src="../assets/off_mujer.png" alt="">
+                <img src="../assets/off_mujer.png" alt=""/>
             </div>
 
         </div>
 
     </section>
 
-    <!-- FOOTER , cambiar hacer un html para el footer -->
     <footer>
 
         <div>
@@ -96,7 +72,7 @@
             <p>www.yourshoes.com</p>
         </div>
 
-        <img src="../assets/zapstepLogo.png" alt="Logo">
+        <img src="../assets/zapstepLogo.png" alt="Logo"/>
 
         <div>
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -106,5 +82,5 @@
 
     </footer>
 
-    </body>
-</html>
+</>)
+}
