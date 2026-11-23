@@ -13,4 +13,4 @@ app.listen(3000, () => {
 })
 //Middlewares
 app.use(express.json());
-app.use('api/user', rutaUsers)
+app.use('/api/user', rutaUsers)
