@@ -1,0 +1,36 @@
+/* HERO */
+.hero{
+    height: 600px;
+    display:flex;
+    align-items:center;
+    background-size:cover;
+    background-position:center;
+    border-bottom: 1px solid var(--border-gold);
+    background-image: url("../../assets/Designer.png");
+}
+
+.hero_content{
+    margin-left:10%; 
+}
+
+.hero_title{
+    font-size:4rem;
+    max-width:700px;
+    margin-bottom:30px;
+    text-shadow:3px 3px 8px rgba(0,0,0,.7);
+}
+
+.hero_btn button{
+    padding:15px 35px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+    background: #aa7c11;
+    border:2px solid #d4af37;
+    color:var(--text-main);
+}
+
+.hero_btn button:hover{
+    background:#d4af37;
+    color:black;
+}

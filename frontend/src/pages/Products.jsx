@@ -1,9 +1,4 @@
-
-
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-
-import '../ccs/pages/products.css'
+import '../styles/products.css'
 
 import businessClassic from '../assets/buissnescls.jpg'
 import runningMax from '../assets/running_max.jpg'
@@ -19,9 +14,7 @@ import ClassicBrown from '../assets/brcl.jpg'
 export default function Products(){
     return(
         <>
-            <header>
-                <Navbar/>
-            </header>
+        
             <section className="productos">
 
                 <h2>Todos los productos:</h2>
@@ -100,9 +93,7 @@ export default function Products(){
                 </div>
 
             </section>
-            <footer>
-                <Footer/>
-            </footer>
+            
         </>
     )
 }

@@ -10,14 +10,16 @@ import Profile from '../pages/Profile';
 
 export default function AppRoutes() {
   return (
-    <Routes> 
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Products" element={<Products />} />
-        <Route path="/NewArrivals" element={<NewArrivals />} /> 
-        <Route path="/About" element={<About />} /> 
-        <Route path="/Register" element={<Register />} /> 
-        <Route path="/Login" element={<Login />} /> 
-        <Route path="/Profile" element={<Profile />} /> 
-    </Routes>
+    <>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/NewArrivals" element={<NewArrivals />} /> 
+          <Route path="/About" element={<About />} /> 
+          <Route path="/Register" element={<Register />} /> 
+          <Route path="/Login" element={<Login />} /> 
+          <Route path="/Profile" element={<Profile />} /> 
+      </Routes>
+    </>
   )
 }
