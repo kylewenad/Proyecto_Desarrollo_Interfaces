@@ -32,7 +32,7 @@ const onSubmit = async (e)=>{
           </form>
           <p className="login__register">
             ¿Ya tienes cuenta?<br></br>
-              <a className="register__login-link" href="login.html">
+              <a className="register__login-link" href="/login">
                 Inicia sesión aquí
               </a>
           </p>
@@ -41,57 +41,3 @@ const onSubmit = async (e)=>{
     </> 
 ); 
 } 
-/*     
-          <header class="register__header">
-            <h1 class="register__title">Regístrate</h1>
-
-            <p class="register__subtitle">
-              Crea una nueva cuenta en ZapStep
-            </p>
-          </header>
-
-          <form className="register__form" id="registerForm">
-            <div class="register__input-wrapper">
-            <i class="fa-solid fa-user"></i>
-            <input
-                class="register__input"
-                type="text"
-                id="nombre"
-                name="nombre"
-                placeholder="Introduce tu nombre"
-                required
-        />
-      </div>
-      
-      <div class="register__input-wrapper">
-        <i class="fa-solid fa-envelope"></i>
-          <input
-            class="register__input"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Introduce tu email"
-            required
-          />
-      </div>
-
-      <div class="register__input-wrapper">
-        <i class="fa-solid fa-lock"></i>
-          <input
-            class="register__input"
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Introduce tu contraseña"
-            required
-          />
-      </div>
-
-      <button class="register__button" type="submit">Crear cuenta</button>
-
-      
-    </form>
-
-
-
-   */

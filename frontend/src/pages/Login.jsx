@@ -1,8 +1,9 @@
+import '../styles/components/form.css';
+
 export default function Login() {
 return (
 
-<main class="login">
-    <section class="login__section">
+    <section class="login">
         <div class="login__container">
             <header class="login__header">
                 <h1 class="login__title">Inicia sesión</h1>
@@ -64,7 +65,7 @@ return (
                     </form>
         </div>
         </section>
-    </main>
+
 
 )
 }
