@@ -32,9 +32,11 @@ export default function ProfileMenu() {
         </div>
 
         <div className="info__profile">
-          <h2>PERFIL</h2>
-          <img src={profile_img} alt="imagen por defecto del perfil"/>
-            
+          <div className="profile__titulo">
+            <h2>PERFIL</h2>
+            <img src={profile_img} alt="imagen por defecto del perfil"/>
+          </div>
+          <div className="profile__data">
             <label>Nombre: </label>
               <input className="profile__input"
                 type="text"
@@ -46,7 +48,21 @@ export default function ProfileMenu() {
                 value={email}
                 readOnly>
               </input>
-           
+            <label>Direccion: </label>
+            <input className="profile__input">         
+              </input>
+            </div>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
+           <br></br>
         </div>
       </div>
     </section>

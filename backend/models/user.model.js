@@ -18,13 +18,13 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
             select: false
-        }/*,
+        },
         rol: {
             type: String,
             required: true,
             trim: true,
-            enum: ["CLIENTE", "SOPORTE", "ADMINISTRADOR"]
-        },*/
+            enum: ["CLIENTE", "EMPLEADO", "ADMINISTRADOR"]
+        },
     },
     {
         timestamps: true,

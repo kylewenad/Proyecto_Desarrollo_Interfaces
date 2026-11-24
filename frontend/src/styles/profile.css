@@ -13,7 +13,8 @@
 
 .container__profile{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 250px 1fr;
+    min-height: 600px;
     gap: 20px;
     position:relative;
     z-index:1;
@@ -32,8 +33,7 @@
 .aside__profile{
     display:flex;
     flex-direction:column;
-    gap:16px;
-    max-width: 420px;
+    padding: 2rem;
 }
 
 .aside__button{
@@ -63,11 +63,13 @@
 }
 
 .info_profile{
-    position: relative;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 }
 
+.profile__titulo{
+    align-content: center;
+}
 .info__profile img{
     max-width: 100px;
    
