@@ -1,50 +1,64 @@
-.carousel__section {
-  text-align: center;
-  
+.carousel__section{
+    text-align: center;
+    padding: 40px 0;
 }
 
 .carousel__section h2{
     padding: 20px;
     margin: 0;
-  }
-
-.carousel {
-  position: relative;
-
-  max-width: 60%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-box-sizing: border-box;
-  justify-content: center;
-  align-content: center;
-
-  overflow-x: scroll;
-  overflow: hidden;
-} 
-
-.carousel__btn {
-
-  z-index: 2;
-  width:48px;
-  height:48px;
-
-  border:none;
-  border-radius:50%;
-  background-color: var(--gold-primary);
-
+    color: #d4af37;
 }
 
-.carousel__btn prev{
-  position:absolute;
+.carousel{
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    overflow: hidden;
 }
 
-.carousel__btn next{
-  position:absolute;
+.carousel__btn{
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #d4af37;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
-.carousel img{
-  max-height: 300px;
-  background-color: white;
-  margin: 30px;
+.carousel__btn:hover{
+    background-color: #b8932c;
+    transform: scale(1.1);
+}
+
+.carousel__btn.prev{
+    position: absolute;
+    left: 0;
+}
+
+.carousel__btn.next{
+    position: absolute;
+    right: 0;
+}
+
+.carousel_img{
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+
+    background-color: white;
+
+    border-radius: 10px;
 }

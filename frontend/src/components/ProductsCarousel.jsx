@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+
+import { useState } from 'react';
 import '../styles/components/carousel.css';
 
-import botaFashion from '../assets/bota_fashion.png';
+import botaFashion from '../assets/botaK.avif';
 import classicBrown from '../assets/classic_brown.png';
-import runningMax from '../assets/running_max.jpg'
-import casualStreet from '../assets/casual_st.jpg'
-import sportsRunner from '../assets/sports_runner.jpg'
+import runningMax from '../assets/rosa.jpg'
+import heels from '../assets/heels.png'
+import sportsRunner from '../assets/moca.jpg'
 /*div className="carousel">
       <button>izquierda</button>
       <img src={botaFashion} alt="" className="carousel_img"/>
@@ -18,20 +19,53 @@ import sportsRunner from '../assets/sports_runner.jpg'
     
     </div>*/
 export default function ProductsCarousel() {
-return(
-  <>
-  <section className="carousel__section">
-   
-    <h2>NUEVO</h2>
-    <div className="carousel">
-      <button className="carousel__btn prev">&#10094;</button>
-      <img src={classicBrown} alt="" class="carousel_img"/>
-      <img src={runningMax} alt="" class="carousel_img"/>
-        <img src={sportsRunner} alt="" class="carousel_img"/>
-      <button className="carousel__btn next">&#10095;</button>
-    
-    </div>
-  </section>
-  </>
-)
+const imagenes = [
+    classicBrown,
+    runningMax,
+    sportsRunner,
+    heels,
+    botaFashion
+  ];
+
+  const [indice, setIndice] = useState(0);
+
+  const siguiente = () => {
+    setIndice((indice + 1) % imagenes.length);
+  };
+
+  const anterior = () => {
+    setIndice((indice - 1 + imagenes.length) % imagenes.length);
+  };
+
+  return (
+    <section className="carousel__section">
+
+      <h2>NUEVA COLECCIÓN OTOÑO 26'</h2>
+
+      <div className="carousel">
+
+        <button
+          className="carousel__btn prev"
+          onClick={anterior}
+        >
+          ❮
+        </button>
+
+        <img
+          src={imagenes[indice]}
+          alt="producto"
+          className="carousel_img"
+        />
+
+        <button
+          className="carousel__btn next"
+          onClick={siguiente}
+        >
+          ❯
+        </button>
+
+      </div>
+
+    </section>
+  );
 }

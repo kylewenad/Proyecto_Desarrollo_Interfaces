@@ -33,7 +33,10 @@ export default function Products(){
             <section className="todosproductos">
 
                 <h2>Todos los productos:</h2>
-                <h2>Zapatos Hombre:</h2>
+                <div id="hombre" className="banner-categoria hombre">
+                    <h2>ZAPATOS HOMBRE</h2>
+                    <p>Elegancia, comodidad y rendimiento para cualquier ocasión.</p>
+                </div>
                 
 
                 <div className="grid-productos">
@@ -105,7 +108,10 @@ export default function Products(){
 
 
                 </div>
-                <h2>Zapatos mujer:</h2>
+                <div id="mujer" className="banner-categoria mujer">
+                    <h2>ZAPATOS MUJER</h2>
+                    <p>Diseños modernos que combinan estilo y confort.</p>
+                </div>
                 <div className='grid-productos'>
                     <div className='producto'>
                             <img src={EleganceH}alt="Elegance Heels"/>
@@ -151,7 +157,10 @@ export default function Products(){
 
                     
                 </div>
-                <h2>Zapatos Niños:</h2>
+                <div id="infantil" className="banner-categoria infantil">
+                    <h2>ZAPATOS INFANTILES</h2>
+                    <p>Calzado resistente, cómodo y pensado para los más pequeños.</p>
+                </div>
                 <div className='grid-productos'>
                      <div className='producto'>
                             <img src={runkblue}alt="Runner Kids Azul"/>
@@ -161,34 +170,34 @@ export default function Products(){
                     <div className='producto'>
                             <img src={rrosa}alt="Runner Kids Rosa"/>
                             <h3>Runner Kids Rosa</h3>
-                            <p>78,99€</p>
+                            <p>68,99€</p>
                         </div>
 
                     <div className='producto'>
                             <img src={snju}alt="Sneaker Junior"/>
                             <h3>Sneaker Junior</h3>
-                            <p>78,99€</p>
+                            <p>103,99€</p>
                         </div>
                     <div className='producto'>
                             <img src={sk}alt="Deportivo School"/>
                             <h3>Deportivo School</h3>
-                            <p>78,99€</p>
+                            <p>92,99€</p>
                         </div>
 
                     <div className='producto'>
                             <img src={sank}alt="Sandalia Kids"/>
                             <h3>Sandalia Kids</h3>
-                            <p>78,99€</p>
+                            <p>67,99€</p>
                         </div>
                     <div className='producto'>
                             <img src={botak}alt="Bota Mini Adventure"/>
                             <h3>Bota Mini Adventure</h3>
-                            <p>78,99€</p>
+                            <p>120,99€</p>
                         </div>
                     <div className='producto'>
                             <img src={urbanG}alt="Urban Girl"/>
                             <h3>Urban Girl</h3>
-                            <p>78,99€</p>
+                            <p>111,99€</p>
                         </div>
 
 
