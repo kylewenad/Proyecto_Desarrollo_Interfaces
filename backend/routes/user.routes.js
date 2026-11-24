@@ -1,5 +1,7 @@
 const express = require('express');
 const usuarioController = require('../controllers/user.controller');
+const { verificarToken }= require('../middlewares/auth');
+
 
 const ruta= express.Router();
 
@@ -8,8 +10,11 @@ ruta.get('/', (req, res) => {
 });
 
 ruta.post('/crearUsuario', usuarioController.signUp);
-ruta.get('/login', usuarioController.login);
-ruta.delete('/eliminarUsuario', usuarioController.deleteUser);
+ruta.post('/login', usuarioController.login);
 
+ruta.get('/profile', verificarToken,usuarioController.getProfile);
+ruta.delete('/eliminarUsuario', verificarToken, usuarioController.deleteUser);
+
+ruta.patch("/:id/rol", verificarToken, usuarioController.cambiarRolUsuario)
 
 module.exports= ruta;
