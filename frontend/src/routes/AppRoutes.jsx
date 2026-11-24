@@ -8,6 +8,7 @@ import About from '../pages/About';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Pedidos from '../pages/Pedidos';
+import Carrito from '../pages/Cart';
 
 export default function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export default function AppRoutes() {
 
           <Route path="/Profile" element={<Profile />} />          
           <Route path="/Pedidos" element={<Pedidos />} />
+          <Route path="/Carrito" element={<Carrito/>}/>
 
       </Routes>
     </>
