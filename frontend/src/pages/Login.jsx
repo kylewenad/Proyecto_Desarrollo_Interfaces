@@ -1,71 +1,44 @@
+import { useState } from 'react'; 
+import { useAuth } from '../context/AuthContext';
 import '../styles/components/form.css';
 
+
 export default function Login() {
-return (
+    const { login }  = useAuth(''); 
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState(''); 
+    const [error,setError] = useState(''); 
+    const onSubmit = async (e)=>{ 
+        e.preventDefault(); 
+    const ok = await login(email, password); 
+    if(!ok) {
+        setError('Credenciales inválidas');
+    } else { 
+        window.location.href='/profile'; 
+    }
+    };
+    return (
 
-    <section class="login">
-        <div class="login__container">
-            <header class="login__header">
-                <h1 class="login__title">Inicia sesión</h1>
-                     <p class="login__subtitle">
-                        Introduce tus datos para acceder a tu cuenta
-                    </p>
-            </header>
-            <form class="login__form" id="loginForm">                     
-                <div class="login__field">
-                    <label class="login__label" for="email">Email</label>
-                        <div class="login__input-wrapper">
-                            <i class="fa-solid fa-envelope login__icon"></i>
-                                <input
-                                    class="login__input"
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Email"
-                                    required
-                                />
-                        </div>
-                </div>
-                
-                <div class="login__field">
-                    <label class="login__label" for="password">Contraseña</label>
-                    <div class="login__input-wrapper">
-                        <i class="fa-solid fa-lock login__icon"></i>
-                        <input
-                        class="login__input"
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Contraseña"
-                        required
-                        />
-                    </div>
-                    </div>
-          
-            <div class="login__remember">
-              <input
-                class="login__checkbox"
-                type="checkbox"
-                id="remember"
-                name="remember"
-              />
-              <label class="login__remember-label" for="remember">
-                Recuérdame
-              </label>
-            </div>
-        
-            <button class="login__button" type="submit">Iniciar sesión</button>
-        
-            <p class="login__register">
-              ¿No tienes cuenta?
-              <a class="login__register-link" href="./register.html">
-                Crea una aquí
-              </a>
-            </p>
-                    </form>
+    <section className="section__form">
+        <div className="container">
+            <form onSubmit={onSubmit} className="form"> 
+                <h2 className="header__form"><strong>Login</strong></h2> 
+                <label>Email</label>
+                    <input className="form__input-wrapper" type="email" value={email} onChange={e=>setEmail(e.target.value)} required /> 
+                <label>Contraseña</label>
+                <input className="form__input-wrapper" type="password" value={password} onChange={e=>setPassword(e.target.value)} required /> 
+                {error && <p>{error}</p>} 
+                <button className="form__button" type="submit">Entrar</button> 
+            </form>
+            
+            <p className="login__register">
+                ¿No tienes cuenta?<br></br>
+                    <a className="register__login-link" href="/register">
+                        Crear cuenta
+                </a>
+            </p>          
         </div>
-        </section>
-
+    </section>
 
 )
 }

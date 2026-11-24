@@ -1,4 +1,4 @@
-.register{
+.section__form{
     height: calc(100vh - 70px);
     display:flex;
     align-items:center;
@@ -11,7 +11,7 @@
     position:relative;
 }
 
-.register::before{
+.section__form::before{
     content:"";
     position:absolute;
     inset:0; 
@@ -19,7 +19,7 @@
 }
 
 /* CONTAINER */
-.register__container{
+.container{
     position:relative;
     z-index:1;
     width:100%;
@@ -34,7 +34,7 @@
 } 
 
 /* HEADER */
-.register__header{
+.header__form{
     text-align:center;
     margin-bottom:25px;
 }
@@ -49,14 +49,14 @@
     font-size:14px;
 }
 
-.register__form{
+.form{
     display:flex;
     flex-direction:column;
     gap:16px;
     max-width: 420px;
 }
 
-.register__input-wrapper{
+.form__input-wrapper{
     display:flex;
     align-items:center;
     border-radius:8px;
@@ -65,13 +65,13 @@
     transition:all .25s ease;
 }
 
-.register__input-wrapper:focus-within{
+.form__input-wrapper:focus-within{
     border:1px solid var(--border-gold);
     box-shadow:var(--gold-glow);
 }
 
 /* INPUT */
-.register__input{
+.form__input{
     width:100%;
     border:none;
     outline:none;
@@ -83,7 +83,7 @@
 
 /* BUTTON */
 
-.register__button{
+.form__button{
     margin:20px;
     padding:14px;
 
@@ -103,7 +103,7 @@
 
 }
 
-.register__button:hover{
+.form__button:hover{
     transform:translateY(-2px);
     box-shadow:var(--gold-glow);
 }

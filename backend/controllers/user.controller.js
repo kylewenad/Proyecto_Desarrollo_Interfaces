@@ -13,8 +13,7 @@ class UsuarioController{
                 username: req.body.username,
                 email: req.body.email,
                 password: passwordEncriptado,
-            
-                //rol: req.body.rol
+                rol: req.body.rol
             })   
                 
                 const result = await usuario.save();
@@ -28,6 +27,17 @@ class UsuarioController{
             return res.status(500).json({ error: "Error interno del servidor al insertar." });
         }      
             
+    }
+
+
+    async login(req,res){
+
+        try{
+            const result = await Usuario.findOne({email: req.body.email}).select("+password");
+            const isCorrectPassword = restult ? await bcrypt.compare(req.body.password, result.password)
+        }catch{
+
+        }
     }
 }
 
