@@ -11,7 +11,7 @@ export default function Navbar() {
       <nav>
         <NavLink end to="/">Home</NavLink>{' | '}
         <NavLink to="/Products">Productos</NavLink>{' | '}
-        <NavLink to="/NewArrivals">New Arrivals</NavLink>{' | '}
+        <NavLink to="/Contact">Contact</NavLink>{' | '}
         <NavLink to="/About">About</NavLink>{' | '}
         <NavLink to="/Login">Login</NavLink>        
       </nav>
