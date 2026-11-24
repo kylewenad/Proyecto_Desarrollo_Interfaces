@@ -7,6 +7,7 @@ import Register from '../pages/Register';
 import About from '../pages/About';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
+import Pedidos from '../pages/Pedidos';
 
 export default function AppRoutes() {
   return (
@@ -18,7 +19,10 @@ export default function AppRoutes() {
           <Route path="/About" element={<About />} /> 
           <Route path="/Register" element={<Register />} /> 
           <Route path="/Login" element={<Login />} /> 
-          <Route path="/Profile" element={<Profile />} /> 
+
+          <Route path="/Profile" element={<Profile />} />          
+          <Route path="/Pedidos" element={<Pedidos />} />
+
       </Routes>
     </>
   )
