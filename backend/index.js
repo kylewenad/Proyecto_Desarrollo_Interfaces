@@ -1,5 +1,6 @@
 const express = require ('express');
 const rutaUsers = require ('./routes/user.routes');
+const rutaTickets = require ('./routes/tickets.routes');
 const db = require('./config/database');
 const app = express();
 
@@ -11,9 +12,16 @@ try{
 
 const PORT = process.env.PORT || 3000;
 
-//Middlewares
 app.use(express.json());
+
+//Usuarios
 app.use('/api/user', rutaUsers)
+
+//Ticket
+app.use('/api/tickets', rutaTickets)
+
+
+//Productos
 
 
 app.get('/api', (req, res) => {
