@@ -91,3 +91,43 @@
 .infantil{
     background-image: url('../assets/in.jpg');
 }
+
+
+/* Botón añadir al carrito */
+.producto button {
+    width: 100%;
+    padding: 12px 18px;
+    margin-top: 10px;
+
+    background: linear-gradient(135deg, #d4af37, #f1d77a);
+    color: #222;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón */
+.producto button:hover {
+    background: linear-gradient(135deg, #b8962e, #d4af37);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(180, 145, 35, 0.3);
+}
+
+/* Efecto al pulsar */
+.producto button:active {
+    transform: scale(0.97);
+}
+
+/* Accesibilidad: foco con teclado */
+.producto button:focus-visible {
+    outline: 2px solid #8c6d16;
+    outline-offset: 3px;
+}
