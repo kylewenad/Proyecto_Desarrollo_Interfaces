@@ -116,7 +116,30 @@ export default function Cart() {
 
             <button
               className="boton-pagar"
-              onClick={() => navigate("/pago")}
+              onClick={() => {
+                const nuevoPedido = {
+                  id: Date.now(),
+                  productos: productos,
+                  estado: "Confirmado",
+                  fecha: new Date().toLocaleDateString(),
+                  total: total
+                };
+
+                const pedidosGuardados =
+                  JSON.parse(localStorage.getItem("pedidos")) || [];
+
+                pedidosGuardados.push(nuevoPedido);
+
+                localStorage.setItem(
+                  "pedidos",
+                  JSON.stringify(pedidosGuardados)
+                );
+
+                localStorage.removeItem("carrito");
+                setProductos([]);
+
+                navigate("/pedidos");
+              }}
             >
               Pagar
             </button>
