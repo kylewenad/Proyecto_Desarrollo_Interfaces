@@ -1,18 +1,19 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import profile_img from "../assets/profile_img.png"
 import '../styles/profile.css';
-import { useState } from 'react'; 
+import { useAuth } from "../context/AuthContext"; 
 
-export default function ProfileMenu() {
-  const [user] = useState("");
-  const [email] = useState("");
-  const [direccion] = useState("");
-
+export default function Profile() {
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -45,29 +46,25 @@ export default function ProfileMenu() {
           <div className="profile__data">
 
             <div className="campo">
-            <label>Nombre: </label>
+            <label htmlFor="profile_username">Nombre: </label>
               <input className="profile__input"
+                id="profile_username"
                 type="text"
-                value={user}
+                value={user.username}
                 readOnly></input>
               </div>
 
             <div className="campo">
-            <label>Email: </label>
+            <label htmlFor="profile_email">Email: </label>
               <input className="profile__input"
+                id="profile_email"
                 type="text"
-                value={email}
+                value={user.email}
                 readOnly>
               </input>
             </div>
 
-            <div className="campo">
-              <label>Direccion: </label>
-              <input className="profile__input"
-                type="text"
-                value={direccion}
-                readOnly/>         
-            </div>
+            
             <div className="profile__actions">
               <button className="profile__edit-btn">EDITAR PERFIL</button>
             </div>
@@ -78,9 +75,15 @@ export default function ProfileMenu() {
       </div>
     </section>
   );
-} /*<label>Direccion: </label>
+} 
+
+
+/* NO AÑADIDO TEMPORALMENTE
+<div className="campo">
+              <label htmlFor="profile_address">Direccion: </label>
               <input className="profile__input"
+                id="profile_address"
                 type="text"
                 value={direccion}
-                readOnly>         
-              </input>*/
+                readOnly/>         
+            </div>*/

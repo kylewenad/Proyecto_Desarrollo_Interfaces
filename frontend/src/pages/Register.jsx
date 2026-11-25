@@ -11,7 +11,7 @@ const [ok,setOk] = useState(false);
 
 const onSubmit = async (e)=>{ 
   e.preventDefault(); 
-  await apiPost('/api/user/crearUsuario', { username, email, password }); 
+  await apiPost('/crearUsuario', { username, email, password }); 
   setOk(true); 
 };return (
     <>

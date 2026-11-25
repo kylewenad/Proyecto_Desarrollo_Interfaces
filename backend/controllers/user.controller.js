@@ -135,11 +135,12 @@ class UsuarioController{
      async deleteUser(req, res){
 
         try {
-            //Verificar que el usuario que quiere eliminar a otro es administrador
+            //Verificar que eres administrador para poder eliminar al usuario.
             if(req.user.rol !== "ADMINISTRADOR"){
                 return res.status(403).json({error: "No tienes permisos de administrador."})
             }
 
+            //El campo nombre de usuario es obligatorio
             const {username} = req.body;
             if(!username){
                 return res.status(400).json({error: "El nombre de usuario es obligatorio."})
@@ -149,20 +150,21 @@ class UsuarioController{
             const eliminado = await Usuario.findOneAndDelete({ username: username.trim() });
             
             // Evitar que el administrador autenticado se elimine a sí mismo
-            //FALTA PROBAR
             if (req.user.username && req.user.username === username.trim()) {
                 return res.status(400).json({
                 error: "No puedes eliminar tu propio usuario.",
                 });
             }
 
-
+            //Si no se encuentra el usuario al que se quiere eliminar, lanza un error.
             if (!eliminado) {
                 return res.status(404).json({ error: 'Usuario no encontrado' });
             }
 
             return res.status(200).json({mensaje: "Usuario eliminado."});
+        
         } catch (error) {
+            
             console.error("Error al eliminar usuario:", error);
             return res.status(500).json({error: "Error al eliminar usuario."});
         }
@@ -173,7 +175,7 @@ class UsuarioController{
     async cambiarRolUsuario(req, res){
 
         try{            
-            //Campos necesarios del usuario que se quiere eliminar
+            //Campos necesarios del usuario que se quiere cambiar
             const { id } = req.params;
             const { rol } = req.body; 
             
@@ -187,11 +189,10 @@ class UsuarioController{
                 return res.status(400).json({error: "Rol no válido."});
             }
             
-            //Comprobar que el rol no sea el de administrador.
+            //Si el administrador quiere cambiar de rol, no puede.
             if(!req.user.id === id && rol !== "ADMINISTRADOR"){
                 return res.status(400).json({error: "No puedes cambiar tu rol de administrador."})
             }
-
 
             //Busca el usuario que se quiere eliminar
             const usuarioActualizado = await Usuario.findByIdAndUpdate(id, {rol}, {new: true, runValidators: true});
