@@ -21,9 +21,9 @@ const userSchema = new mongoose.Schema(
         },
         rol: {
             type: String,
-            required: true,
             trim: true,
-            enum: ["CLIENTE", "EMPLEADO", "ADMINISTRADOR"]
+            enum: ["CLIENTE", "EMPLEADO", "ADMINISTRADOR"],
+            default: "CLIENTE"
         },
     },
     {
