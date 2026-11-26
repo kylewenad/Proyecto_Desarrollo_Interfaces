@@ -1,5 +1,31 @@
 const mongoose = require('mongoose');
 
+//Para que haya mensajes entre cliente y empleados o administrador
+const messageSchema = new mongoose.Schema(
+    {
+        sender: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Usuario',
+            required: true
+        },
+        senderRole: {
+            type: String,
+            required: true,
+            enum: ["CLIENTE", "SOPORTE", "ADMINISTRADOR"]
+        },
+        text: {
+            type: String,
+            required: true,
+            trim: true
+        }
+    },
+    {
+        timestamps: true,
+        _id: true
+    }
+);
+
+
 const ticketSchema = new mongoose.Schema(
     {
         idTicket:{
@@ -16,9 +42,9 @@ const ticketSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        category: {
+       // category: {
             //Añadir categorias posibles?
-        },
+       // },
         priority: {
             type: String,
             required: true,

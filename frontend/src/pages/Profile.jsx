@@ -6,10 +6,12 @@ import { useAuth } from "../context/AuthContext";
 export default function Profile() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-
+//Navigate: componente de react router
+//useNavigate: es un hook de react router que se utiliza para cambiar de ruta
+//en eventos o funciones
   if (!user) {
     return <Navigate to="/login" replace />;
-  }
+  } 
 
   const handleLogout = () => {
     logout();
