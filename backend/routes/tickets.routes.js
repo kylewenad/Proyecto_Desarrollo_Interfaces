@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const usuarioController = require('../controllers/ticket.controller');
 const { verificarToken }= require('../middlewares/auth');
 const ticketController = require('../controllers/ticket.controller');
@@ -21,4 +21,4 @@ ruta.post('/modificarTicket', ticketController.updateTicket);
 ruta.delete('/eliminarTicket', ticketController.deleteTicket);
 */
 
-module.exports = ruta;
+module.exports = ruta;*/
