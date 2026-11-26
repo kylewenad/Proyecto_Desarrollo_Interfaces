@@ -54,7 +54,7 @@ export default function Cart() {
         <div className="carrito-vacio">
           <h2>Tu carrito está vacío</h2>
           <p>¡Todavía no has añadido ningún zapato!</p>
-          <button onClick={() => navigate("/productos")}>
+          <button onClick={() => navigate("/Products")}>
             Descubrir productos
           </button>
         </div>

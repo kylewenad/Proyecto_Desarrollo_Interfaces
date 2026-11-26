@@ -1,7 +1,9 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import profile_img from "../assets/profile_img.png"
+import navbarUser from "../components/NavabrUser"
 import '../styles/profile.css';
 import { useAuth } from "../context/AuthContext"; 
+import Navbar from "../components/NavabrUser";
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -19,6 +21,8 @@ export default function Profile() {
   };
 
   return (
+    <>
+    
     <section className="section__profile">
       <div className="container__profile">
 
@@ -67,15 +71,14 @@ export default function Profile() {
             </div>
 
             
-            <div className="profile__actions">
-              <button className="profile__edit-btn">EDITAR PERFIL</button>
-            </div>
+           
 
           </div>
            
         </div>
       </div>
     </section>
+    </>
   );
 } 
 
