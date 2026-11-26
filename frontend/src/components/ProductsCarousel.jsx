@@ -7,17 +7,7 @@ import classicBrown from '../assets/classic_brown.png';
 import runningMax from '../assets/rosa.jpg'
 import heels from '../assets/heels.png'
 import sportsRunner from '../assets/moca.jpg'
-/*div className="carousel">
-      <button>izquierda</button>
-      <img src={botaFashion} alt="" className="carousel_img"/>
-      
-      
-      <img src={casualStreet} alt="" class="carousel_img"/>
-      
-      
-      <button>derecha</button>
-    
-    </div>*/
+
 export default function ProductsCarousel() {
 const imagenes = [
     classicBrown,
