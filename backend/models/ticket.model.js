@@ -63,10 +63,10 @@ const ticketSchema = new mongoose.Schema(
             required: true
         },
 
-        empleadoAsignado: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'usuario',
-            default: null
+        email: {
+            type: String,
+            require: true,
+            trim: true
         },
 
         subject: {
@@ -119,6 +119,7 @@ const ticketSchema = new mongoose.Schema(
         versionKey: false
     }
 );
+
 
 const Ticket = mongoose.model('ticket', ticketSchema);
 
