@@ -117,10 +117,20 @@ export default function Cart() {
             <button
               className="boton-pagar"
               onClick={() => {
+                const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+                // Comprobar si ha iniciado sesión
+                if (!usuario) {
+                  navigate("/login");
+                  return;
+                }
+
+                // Crear pedido
                 const nuevoPedido = {
                   id: Date.now(),
+                  usuario: usuario.email || usuario.nombre,
                   productos: productos,
-                  estado: "Confirmado",
+                  estado: "Pendiente",
                   fecha: new Date().toLocaleDateString(),
                   total: total
                 };
@@ -140,6 +150,7 @@ export default function Cart() {
 
                 navigate("/pedidos");
               }}
+
             >
               Pagar
             </button>

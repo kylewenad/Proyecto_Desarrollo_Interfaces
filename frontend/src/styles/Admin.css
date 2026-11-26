@@ -1,0 +1,287 @@
+
+/* CONTENEDOR PRINCIPAL */
+
+.admin {
+    min-height: calc(100vh - 70px);
+    padding: 50px 5%;
+    background: #141414;
+    color: white;
+}
+
+/* TÍTULO PRINCIPAL */
+
+.admin > h1 {
+    text-align: center;
+    color: #d4af37;
+    font-size: 2.4rem;
+    margin-bottom: 50px;
+}
+
+/* SECCIONES */
+
+.admin section {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+}
+
+.admin section > h2 {
+    color: #d4af37;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(212,175,55,0.3);
+}
+
+/* TARJETAS DE PEDIDOS Y CONSULTAS */
+
+.pedido-admin-card,
+.consulta-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 25px;
+
+    box-shadow: 0 0 20px rgba(212,175,55,0.08);
+
+    transition: .3s;
+}
+
+.pedido-admin-card:hover,
+.consulta-card:hover {
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212,175,55,0.15);
+}
+
+/* TÍTULOS */
+
+.pedido-admin-card h3,
+.consulta-card h3 {
+    color: #d4af37;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+.pedido-admin-card h4,
+.consulta-card h4 {
+    color: #e5c158;
+    margin: 20px 0 12px;
+}
+
+/* INFORMACIÓN */
+
+.pedido-admin-info,
+.consulta-info {
+    background: #222;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.pedido-admin-info p,
+.consulta-info p,
+.consulta-mensaje p {
+    color: #ddd;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.pedido-admin-info strong,
+.consulta-info strong {
+    color: #d4af37;
+}
+
+/* PRODUCTOS DE LOS PEDIDOS */
+
+.pedido-admin-producto {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+}
+
+.pedido-admin-producto img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+
+    border-radius: 10px;
+    border: 1px solid rgba(212,175,55,0.4);
+}
+
+.pedido-admin-producto h4 {
+    color: white;
+    margin: 0 0 10px;
+}
+
+.pedido-admin-producto p {
+    color: #bbb;
+    margin: 6px 0;
+}
+
+/* ESTADO DEL PEDIDO */
+
+.pedido-admin-estado,
+.consulta-estado {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(212,175,55,0.2);
+}
+
+.pedido-admin-estado label,
+.consulta-estado label {
+    color: #d4af37;
+    font-weight: 600;
+}
+
+/* SELECTORES */
+
+.pedido-admin-estado select,
+.consulta-estado select {
+    padding: 12px 18px;
+
+    background: #252525;
+    color: #d4af37;
+
+    border: 1px solid rgba(212,175,55,0.5);
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+
+    transition: .3s;
+}
+
+.pedido-admin-estado select:focus,
+.consulta-estado select:focus {
+    border-color: #e5c158;
+    box-shadow: 0 0 10px rgba(212,175,55,0.2);
+}
+
+.pedido-admin-estado select option,
+.consulta-estado select option {
+    background: #1a1a1a;
+    color: white;
+}
+
+/* MENSAJES DE CONSULTAS */
+
+.consulta-mensaje {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.consulta-mensaje h4 {
+    color: #d4af37;
+    margin-top: 0;
+}
+
+/* MENSAJES CUANDO NO HAY DATOS */
+
+.admin section > p {
+    text-align: center;
+    color: #aaa;
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(212,175,55,0.2);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .admin {
+        padding: 30px 15px;
+    }
+
+    .admin > h1 {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+    }
+
+    .admin section > h2 {
+        font-size: 1.4rem;
+    }
+
+    .pedido-admin-card,
+    .consulta-card {
+        padding: 20px;
+    }
+
+    .pedido-admin-producto {
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .pedido-admin-producto img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .pedido-admin-estado,
+    .consulta-estado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pedido-admin-estado select,
+    .consulta-estado select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+/* BOTÓN GUARDAR ESTADO */
+
+.guardar-estado-btn {
+    padding: 12px 25px;
+
+    background: #d4af37;
+    color: #000;
+
+    border: none;
+    border-radius: 25px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.guardar-estado-btn:hover {
+    background: #e5c158;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(212,175,55,0.4);
+}
+
+.guardar-estado-btn:disabled {
+    background: #555;
+    color: #aaa;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 480px) {
+
+    .pedido-admin-producto {
+        flex-direction: column;
+    }
+
+    .pedido-admin-producto img {
+        width: 120px;
+        height: 120px;
+    }
+
+}
