@@ -10,7 +10,7 @@ ruta.get('/', (req, res) => {
 });
 
 ruta.post('/crearTicket', ticketController.submitTicket);
-ruta.post('/:id/messages', ticketController.addMessageToTicket);
+/*ruta.post('/:id/messages', ticketController.addMessageToTicket);
 
 
 ruta.get('/obtenerTickets', ticketController.getTickets);
@@ -19,6 +19,6 @@ ruta.get('/:id', ticketController.getTicketById);
 ruta.post('/modificarTicket', ticketController.updateTicket);
 
 ruta.delete('/eliminarTicket', ticketController.deleteTicket);
-
+*/
 
 module.exports = ruta;

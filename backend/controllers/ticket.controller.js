@@ -4,52 +4,51 @@ const mongoose = require('mongoose');
 const jwt = require ("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-
 class TicketController{
     
     //Crear ticket
     async submitTicket(req,res)  {
-        
-        try{
-            //Campos necesarios para la creación de ticket
-            const { subject, description } = req.body;
-            
-            //Si alguno de los campos necesarios están vacíos, lanza un error.
-            if(!subject || !description ) {
-                return res.status(400).json({error: "El asunto y la descripción obligatorios."})
-            }
 
-            //
-            const lastTicket = await Ticket.findOne().sort({ idTicket: -1 }).select("idTicket");
-            const nextIdTicket = lastTicket?.idTicket ? lastTicket.idTicket + 1 : 1;
+        try {
+            //Comprueba el ultimo id de ticket para poder sumar 1 al nuevo ticket   
+            const ultimoTicket = await Ticket.findOne().sort({ idTicket: -1 });
+
+            //Suma 1 al id del ultimo ticket para obtener el id del nuevo ticket
+            //Si no existe uno previamente, comienza con el 1
+            const nuevoId = ultimoTicket ? ultimoTicket.idTicket + 1 : 1;
 
             const ticket = new Ticket({
-                idTicket: nextIdTicket,
-                user: req.usuario.id,
-                subject: subject,
-                description: description,
-                priority: ["BAJA", "MEDIA", "ALTA"],
-                status: "ABIERTO",
-                relations:  ["CLIENTE", "SOPORTE", "ADMINISTRADOR"]
-            })
+                idTicket: nuevoId,
+                cliente: req.user.id,
 
-            const ticketCreado = await ticket.save();
-            
-            console.log("Ticket registrado corerctamente:", ticketCreado);
-                
-            //Todo correcto.
-            return res.status(201).json({mensaje: "Ticket resgistrado correctamente: ${ticketCreado} 😊👍"});
-    
+                subject: req.body.subject,
+                category: req.body.category,
+                priority: req.body.priority,
+
+                messages: [
+                    {
+                        sender: req.user.id,
+                        senderRole: "CLIENTE",
+                        text: req.body.description
+                    }
+                ]
+            });
+
+            await ticket.save();
+
+            return res.status(201).json(ticket);
+
         } catch (error) {
-           
-            console.error("Fallo al crear ticket.", error);
-            return res.status(500).json({ error: "Error interno del servidor al crear ticket." });
-        }      
-            
-    }
 
+            console.error(error);
+
+            return res.status(500).json({
+                message: "Error al crear ticket"
+        });
+
+        }
     //Obtener tickets
-    async getTickets(req,res){
+/*    async getTickets(req,res){
 
         try {
             //Campos necesarios para obtener tickets
@@ -208,7 +207,7 @@ class TicketController{
         } catch (error) {
             console.error("Error al cambiar el rol", error);
             return res.status(500).json({error: "Error interno al actualizar el rol."});
-        }
+        }*/
     }
 
 }
