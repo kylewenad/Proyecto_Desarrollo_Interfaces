@@ -1,38 +1,160 @@
 const Producto = require("../models/producto.model")
-const productos= require("../config/bbdd/productos")
-const jwt = require("jsonwebtoken")
 
-const insertAll = async (req,res) => {
-    await Producto.insertMany(productos);
-    return res.status(201).send("Todos los productos insertados correctamente");
+class ProductoController{
+
+//Mostrar datos
+    async findAll(req, res) {
+    
+        try {
+        const resultado = await Producto.find();
+        
+        res.status(200).json({
+            mensaje: "Productos encontrados.",
+            total: resultado.length,
+            resultados: resultado
+        });
+
+    } catch (error) {
+        
+        console.error("Fallo al buscar los datos:", error);
+        return res.status(500).json({ error: "Error interno del servidor al buscar todos los productos." });
+    }
 }
-const showAll = async (req,res) => {
-    const result = await Producto.find();
-    return res.status(202).send(result);
+
+//Mostrar productos por categoria
+    async findByCategoria (req, res) {
+    try{
+
+        const filtroCategoria = req.params.categoria;
+        const regex = new RegExp(filtroCategoria, 'i');
+        const resultado = await Producto.find({categoria: regex});
+           
+        return res.status(200).json({
+            mensaje: "Productos con la categoria encontradas.",
+            total: resultado.length,
+            resultados: resultado
+        });
+
+    } catch (error) {
+        
+        console.error("Fallo al buscar la categoria en los datos:", error);
+        return res.status(500).json({ error: "Error interno del servidor al buscar por categoria." });
+    
+    }
     
 }
 
-const findByTipo = async (req,res) => {
-    const result = await Producto.find({tipo:req.params.tipo});
-    return res.status(202).send(result);
-}
+//Mostrar productos entre un rango de precios
+    async findByPrecioMinMax(req, res) {
+    try{
 
-const findProducto = async (req,res) => {
-    const result= await Producto.find({
-        nombre:{
-            $regex: req.params.texto ,//busca coincidencias de texto
-            $options: "i" //ignore case
+        const precioMin = Number(req.params.min);
+        const precioMax = Number(req.params.max);
+        
+        if (isNaN(precioMin) ||isNaN(precioMax)) {
+            return res.status(400).json({ 
+                error: "El precio indicado no es válido." });
         }
-    });
 
-    return res.status(200).send(result);
+        const resultado = await Producto.find({ 
+            precio: { $gte: precioMin, $lte: precioMax } 
+        });
+
+        return res.status(200).json({
+            mensaje: "Productos con el rango de precio indicados encontrados.",
+            total: resultado.length,
+            resultados: resultado
+        });   
+                
+    } catch (error) {
+
+        console.error("Fallo interno en el servidor:", error);
+        return res.status(500).json({ error: "Error interno del servidor." });
+    
+    }
 }
 
-//buscar x talla ????
+//Mostrar productos por stock
+    async findByStock(req, res) {  
+    
+    try{
 
-module.exports = {
-    insertAll,
-    showAll,
-    findByTipo,
-    findProducto
+        const stockSuperior = Number(req.params.cantidad);
+        console.log(stockSuperior); 
+
+        if (isNaN(stockSuperior)) {
+
+            return res.status(400).json({ error: "El stock indicado no es un número válido." });
+        
+        }
+
+        const resultado = await Producto.find({ "stock.cantidad": { $gt: stockSuperior } });
+            
+        return res.status(200).json({
+            mensaje: "Productos encontrados con el stock superior al indicado.",
+            total: resultado.length,
+            resultados: resultado
+        });
+                  
+                
+    } catch (error) {
+
+        console.error("Fallo interno en el servidor:", error);
+        return res.status(500).json({ error: "Error interno del servidor." });
+    
+    }
 }
+/*
+const findByTexto = async (req, res) => {
+    
+    try{
+
+        const textoBusqueda = req.params.texto;
+        const regex = new RegExp(textoBusqueda, 'i');
+        const resultado = await Producto.find({
+            $or: [
+                { nombre: regex },
+                { descripcion: regex },
+                { categoria: regex },
+                { marca: regex}
+            ]
+        });
+
+        return res.status(200).json({
+            mensaje: "Productos que contienen el texto buscado encontrados.",
+            total: resultado.length,
+            resultados: resultado
+        
+        });
+    
+    } catch (error) {
+        
+        console.error("Fallo interno en el servidor:", error);
+        return res.status(500).json({ error: "Error interno del servidor." });
+
+    }
+}
+
+const ordenarPorPrecio = async (req, res) => {
+    
+    try{
+        // .sort({ precio: 1 }) -> Orden ascendente (de más barato a más caro)
+        // .sort({ precio: -1 }) -> Orden descendente (de más caro a más barato)
+        const resultado = await Producto.find().sort({precio: 1})
+        return res.status(200).json({
+            mensaje: "Productos ordenados por precio ascendente.",
+            resultados: resultado
+        });
+    
+    } catch (error) {
+    
+        console.error("Fallo interno en el servidor:", error);
+        return res.status(500).json({ error: "Error interno del servidor." });    
+    
+    }
+}
+
+;*/
+}
+
+module.exports = new ProductoController();

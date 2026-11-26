@@ -1,20 +1,24 @@
 const express = require('express');
-const usuarioController = require('../controllers/user.controller');
-const { verificarToken }= require('../middlewares/auth');
 
+const { verificarToken }= require('../middlewares/auth'); //Proteccion de rutas
+const usuarioController = require('../controllers/user.controller'); // Metodos de controller
 
 const ruta= express.Router();
+//Obtener usuarios
+ruta.get('/', verificarToken, usuarioController.findAll); 
 
-ruta.get('/', (req, res) => {
-    res.json({ mensaje: 'Ruta users funcionando' });
-});
-
+//Crear usuario
 ruta.post('/crearUsuario', usuarioController.signUp);
 ruta.post('/login', usuarioController.login);
 
+//Obtener usuario
 ruta.get('/profile', verificarToken,usuarioController.getProfile);
+
+//Modificar usuario
+ruta.patch("/:id/rol", verificarToken, usuarioController.cambiarRolUsuario)
+
+//Eliminar usuario
 ruta.delete('/eliminarUsuario', verificarToken, usuarioController.deleteUser);
 
-ruta.patch("/:id/rol", verificarToken, usuarioController.cambiarRolUsuario)
 
 module.exports= ruta;

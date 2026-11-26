@@ -1,6 +1,9 @@
+//FALTA AÑADIR PEDIDOS Y TODO LO QUE SUPONE
+
 const express = require ('express');
 const rutaUsers = require ('./routes/user.routes');
 const rutaTickets = require ('./routes/tickets.routes');
+const rutaProductos = require ('./routes/productos.routes');
 const db = require('./config/database');
 const app = express();
 
@@ -14,14 +17,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-//Usuarios
-app.use('/api/user', rutaUsers)
+//Usuarios, Ticket, Productos
+app.use('/api/user', rutaUsers);
+app.use('/api/tickets', rutaTickets);
+app.use('/api/productos', rutaProductos);
 
-//Ticket
-app.use('/api/tickets', rutaTickets)
-
-
-//Productos
 
 
 app.get('/api', (req, res) => {
