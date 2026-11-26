@@ -79,6 +79,7 @@ class UsuarioController{
 
             //Token temporal para poder navegar por la web en ruta privada
             const token = jwt.sign({
+                id: result._id,
                 username: result.username,
                 email: result.email,
                 rol: result.rol
@@ -111,11 +112,11 @@ class UsuarioController{
     async getProfile(req, res){
 
         try{ 
-            const result = await Usuario.findOne({email: req.body.email}).select("-password"); //Singo "-" en password para que excluya ese campo
+            const result = await Usuario.findOne({email: req.body.email}).select("-password"); //Signo "-" en password para que excluya ese campo
                 if (!result){
                     return res.status(404).json({error: "Usuario no encontrado"});
                 }
-            return res.status(200).json({mensaje: "Usuario encontrado.",
+            return res.status(200).json({mensaje: "Usuario conectado.",
                     usuario: {
                     id: result._id,
                     username: result.username,
@@ -146,8 +147,7 @@ class UsuarioController{
                 return res.status(400).json({error: "El nombre de usuario es obligatorio."})
             }
             
-            //Buscar al usuario que se quiere eliminar
-            const eliminado = await Usuario.findOneAndDelete({ username: username.trim() });
+            
             
             // Evitar que el administrador autenticado se elimine a sí mismo
             if (req.user.username && req.user.username === username.trim()) {
@@ -156,6 +156,9 @@ class UsuarioController{
                 });
             }
 
+            //Buscar al usuario que se quiere eliminar
+            const eliminado = await Usuario.findOneAndDelete({ username: username.trim() });
+            
             //Si no se encuentra el usuario al que se quiere eliminar, lanza un error.
             if (!eliminado) {
                 return res.status(404).json({ error: 'Usuario no encontrado' });
@@ -194,7 +197,7 @@ class UsuarioController{
                 return res.status(400).json({error: "No puedes cambiar tu rol de administrador."})
             }
 
-            //Busca el usuario que se quiere eliminar
+            //Busca el usuario que se quiere actualizar
             const usuarioActualizado = await Usuario.findByIdAndUpdate(id, {rol}, {new: true, runValidators: true});
 
             //Si el usuario no se encuentra, lanza un error

@@ -18,7 +18,7 @@ app.use(express.json());
 app.use('/api/user', rutaUsers)
 
 //Ticket
-//app.use('/api/tickets', rutaTickets)
+app.use('/api/tickets', rutaTickets)
 
 
 //Productos

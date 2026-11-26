@@ -1,4 +1,4 @@
-db.zapatos.insertMany([
+[
 {
     _id: 1,
     nombre: "Runner Kids Azul",
@@ -324,4 +324,4 @@ db.zapatos.insertMany([
         { talla: 44, cantidad: 6 }
     ]
 }
-]);
+]
