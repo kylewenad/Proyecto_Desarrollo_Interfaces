@@ -37,3 +37,55 @@
     height: auto;
     margin-bottom: 15px;
   }
+
+.nav-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-icons{
+    position: absolute;
+    right: 50px; /* separación del borde */
+    display: flex;
+    align-items: center;
+    gap: 25px; /* separación entre carrito y usuario */
+}
+
+.nav-icon{
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-icon:hover{
+    transform: scale(1.15);
+}
+@media (max-width: 768px){
+
+    .nav-container{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .navbar-icons{
+        position: static;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .nav-icon{
+        width: 28px;
+        height: 28px;
+    }
+}

@@ -9,6 +9,7 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Pedidos from '../pages/Pedidos';
 import Carrito from '../pages/Cart';
+import Admin from '../pages/Admin';
 
 export default function AppRoutes() {
   return (
@@ -24,6 +25,7 @@ export default function AppRoutes() {
           <Route path="/Profile" element={<Profile />} />          
           <Route path="/Pedidos" element={<Pedidos />} />
           <Route path="/Carrito" element={<Carrito/>}/>
+          <Route path="/Admin" element={<Admin/>}/>
 
       </Routes>
     </>
