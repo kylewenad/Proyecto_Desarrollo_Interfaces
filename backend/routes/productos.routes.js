@@ -19,7 +19,7 @@ ruta.get('/ordenados/precio', ProductoController.ordenarPorPrecio);//ordenar por
 //Modificar productoF------------------>ALTA  MODIFICAR  TALLA 
 ruta.post('/modificarProducto', verificarToken, ProductoController.updateProduct);
 
-//Eliminar producto  ----> Falta comprobar
+//Eliminar producto 
 ruta.delete('/eliminarProducto', verificarToken, ProductoController.deleteProduct);
 
 module.exports = ruta;

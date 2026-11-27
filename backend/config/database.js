@@ -19,7 +19,7 @@ mongoose.connect('mongodb://localhost:27017/zapstep_db')
         });
     
         if (!adminExist) {
-        const passwordEncriptada = await bcrypt.hash(req.body.password, 6);
+        const passwordEncriptada = await bcrypt.hash("admin123", 6);
 
         await Usuario.create({
             username: "admin",
@@ -42,7 +42,7 @@ mongoose.connect('mongodb://localhost:27017/zapstep_db')
         }
 
     //Comprobar que los tickets existen en la base de datos, en caso contrario, cargarlos.
-        const ticketExist = await Ticket.findOne();
+       /* const ticketExist = await Ticket.findOne();
 
         if(!ticketExist){
 
@@ -56,7 +56,7 @@ mongoose.connect('mongodb://localhost:27017/zapstep_db')
         
         }else{
             console.log("Los tickets estan cargados en la base de datos.")
-        }
+        }*/
 
     })
 

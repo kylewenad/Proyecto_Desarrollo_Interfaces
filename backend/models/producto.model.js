@@ -12,7 +12,6 @@ const stockSchema = new mongoose.Schema({
     }
 }, { _id: false });
 
-
 const productSchema = new mongoose.Schema(
     {
         _id: {

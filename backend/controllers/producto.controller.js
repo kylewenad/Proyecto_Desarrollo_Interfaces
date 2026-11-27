@@ -1,7 +1,19 @@
-const Producto = require("../models/producto.model")
+const Product = require("../models/producto.model")
+
+async function obtenerSiguienteId(nombreSecuencia){
+            const contador = await Contador.findOneAndUpdate(
+                { _id: nombreSecuencia },
+                { $inc: { seq: 1 } },
+                { new: true, upsert: true }
+            );
+            return contador.seq;
+        }
+
+
 
 class ProductoController{
 
+    
 //Añadir productos
     async addProduct(req, res) {
         
@@ -21,12 +33,10 @@ class ProductoController{
                 return res.status(401).json({error: "Debes tener permisos de administrador para agregar un producto a la base de datos."})
             }
 
-            const lastProduct = await Producto.findOne().sort({ _id: -1 }).select("_id");
+            const idProducto = await obtenerSiguienteId('producto');
             
-            const nextIdProduct = lastProduct?._id ? lastProduct._id + 1 : 1;
-            
-            const nuevoProducto = new Producto({
-                _id: nextIdProduct,
+            const nuevoProducto = new Product({
+                _id: idProducto,
                 nombre: nombre.trim(),
                 categoria: categoria.trim().toUpperCase(),
                 precio: precio,
@@ -56,7 +66,7 @@ class ProductoController{
     async findAll(req, res) {
     
         try {
-        const resultado = await Producto.find();
+        const resultado = await Product.find();
         
         res.status(200).json({
             mensaje: "Productos encontrados.",
@@ -77,7 +87,7 @@ class ProductoController{
 
         const filtroCategoria = req.params.categoria;
         const regex = new RegExp(filtroCategoria, 'i');
-        const resultado = await Producto.find({categoria: regex});
+        const resultado = await Product.find({categoria: regex});
            
         return res.status(200).json({
             mensaje: "Productos con la categoria encontradas.",
@@ -106,7 +116,7 @@ class ProductoController{
                 error: "El precio indicado no es válido." });
         }
 
-        const resultado = await Producto.find({ 
+        const resultado = await Product.find({ 
             precio: { $gte: precioMin, $lte: precioMax } 
         });
 
@@ -138,7 +148,7 @@ class ProductoController{
         
         }
 
-        const resultado = await Producto.find({ "stock.cantidad": { $gt: stockSuperior } });
+        const resultado = await Product.find({ "stock.cantidad": { $gt: stockSuperior } });
             
         return res.status(200).json({
             mensaje: "Productos encontrados con el stock superior al indicado.",
@@ -162,7 +172,7 @@ class ProductoController{
 
         const textoBusqueda = req.params.texto;
         const regex = new RegExp(textoBusqueda, 'i');
-        const resultado = await Producto.find({
+        const resultado = await Product.find({
             $or: [
                 { nombre: regex },
                 { descripcion: regex },
@@ -191,7 +201,7 @@ class ProductoController{
     try{
         // .sort({ precio: 1 }) -> Orden ascendente (de más barato a más caro)
         // .sort({ precio: -1 }) -> Orden descendente (de más caro a más barato)
-        const resultado = await Producto.find().sort({precio: 1})
+        const resultado = await Product.find().sort({precio: 1})
         return res.status(200).json({
             mensaje: "Productos ordenados por precio ascendente.",
             resultados: resultado
@@ -226,7 +236,7 @@ class ProductoController{
             }
             
             //Busca el producto(OBJETO) que se quiere actualizar por el id
-            const productoActualizar = await Producto.findOne({ _id: id});
+            const productoActualizar = await Product.findOne({ _id: id});
             
             //Si el producto no se encuentra, lanza un error
             if(!productoActualizar){
@@ -235,6 +245,7 @@ class ProductoController{
 
             const {nombre, categoria, precio, talla, cantidad} = req.body;
             console.log(categoria)
+
             if(nombre !== undefined) {
                 productoActualizar.set("nombre", nombre);
             }
@@ -255,16 +266,17 @@ class ProductoController{
                         error: 'La cantidad debe ser un número mayor o igual que 0.'
                     });
                 }
+            }
 
-                if (talla !== undefined) {
-                    const tallaNum = Number(talla);
-                    const itemStock = productoActualizar.stock.find((s) => s.talla === tallaNum);
+            if (talla !== undefined) {
+                const tallaNum = Number(talla);
+                const itemStock = productoActualizar.stock.find((s) => s.talla === tallaNum);
 
-                    /*if (!itemStock) {
-                        return res.status(404).json({
-                            error: 'Esa talla no existe en el producto.'
-                        });
-                    }*/
+                if (!itemStock) {
+                    return res.status(404).json({
+                        error: 'Esa talla no existe en el producto.'
+                    });
+                }
 
                     itemStock.cantidad = nuevaCantidad;
             
@@ -276,17 +288,14 @@ class ProductoController{
                         error: 'Debes indicar la talla porque el producto tiene varias.'
                     });
                 }
-
-            }
-
-            const productoActualizado = await productoActualizar.save();
-            console.log(productoActualizado)
-            //Si todo bien, realiza cambios en el producto
-            return res.status(200).json({
+                //Si todo bien, realiza cambios en el producto                
+                const productoActualizado = await productoActualizar.save();
+                console.log(productoActualizado);
+                
+                return res.status(200).json({
                 mensaje: "Producto cambiado correctamente",
                 productoActualizado
             })
-
         }catch (error){
 
             console.error('Fallo al modificar el producto:', error);
@@ -297,7 +306,7 @@ class ProductoController{
 
     async deleteProduct(req, res) {
         try {
-            const { id } = req.body;
+            const  id  = req.body;
             const rolActual = req.user.rol;
 
              if(!id){
@@ -309,7 +318,10 @@ class ProductoController{
                 return res.status(405).json({ error: "Debes ser Administrador para eliminar el producto."})
             }
 
-            const resultado = await Producto.findOneAndDelete({_id: id});
+            const resultado = await Product.findOne({_id: id});
+            
+            const eliminar = resultado.id;
+            await Product.findByIdAndDelete(eliminar);
 
             return res.status(200).json({mensaje: 'Producto eliminado correctamente.'});
 
