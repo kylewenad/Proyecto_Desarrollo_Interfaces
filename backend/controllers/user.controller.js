@@ -132,7 +132,7 @@ class UsuarioController{
 
     }
         
-            
+             
      //Obtener Datos de usuario    
     async getProfile(req, res){
 

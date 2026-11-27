@@ -31,7 +31,7 @@ mongoose.connect('mongodb://localhost:27017/zapstep_db')
         console.log("Administrador creado");
         }
 
-    //Comporbar que los productos existen en la base de datos, en caso contrario, cargarlos en la base de datos
+    //Comprobar que los productos existen en la base de datos, en caso contrario, cargarlos.
         const productsExist = await Producto.findOne();
         console.log(productsExist)
         if (productsExist === null) {
@@ -41,7 +41,7 @@ mongoose.connect('mongodb://localhost:27017/zapstep_db')
             console.log("Los productos ya existen");
         }
 
-    //Comprobar que los tickets existen en la base de datos, en caso contrario, cargarlos en la base de datos
+    //Comprobar que los tickets existen en la base de datos, en caso contrario, cargarlos.
         const ticketExist = await Ticket.findOne();
 
         if(!ticketExist){

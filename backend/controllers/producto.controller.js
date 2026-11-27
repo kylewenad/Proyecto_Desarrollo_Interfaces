@@ -2,6 +2,56 @@ const Producto = require("../models/producto.model")
 
 class ProductoController{
 
+//Añadir productos
+    async addProduct(req, res) {
+        
+        try{
+
+            const { nombre, categoria, precio, talla, cantidad} = req.body;
+
+            if(!nombre || !categoria || !precio || !talla || !cantidad){
+                return res.status(400).json({
+                    error: 'Nombre, categoría, precio, talla y cantidad son obligatorios.'
+                });
+            }
+
+            const rolActual = req.user.rol;
+            
+            if (rolActual !== "ADMINISTRADOR"){
+                return res.status(401).json({error: "Debes tener permisos de administrador para agregar un producto a la base de datos."})
+            }
+
+            const lastProduct = await Producto.findOne().sort({ _id: -1 }).select("_id");
+            
+            const nextIdProduct = lastProduct?._id ? lastProduct._id + 1 : 1;
+            
+            const nuevoProducto = new Producto({
+                _id: nextIdProduct,
+                nombre: nombre.trim(),
+                categoria: categoria.trim().toUpperCase(),
+                precio: precio,
+                stock: [{
+                    talla: talla,
+                    cantidad: cantidad
+                }    
+                ]}
+            )
+
+            const productoGuardado = await nuevoProducto.save();
+
+            return res.status(201).json({
+                mensaje: 'Producto creado correctamente.',
+                datos: productoGuardado
+            });
+
+        }catch (error){
+
+            console.error('Fallo al crear el producto:', error);
+            return res.status(500).json({ error: 'Error interno del servidor al crear el producto.' });
+
+        }
+    }
+
 //Mostrar datos
     async findAll(req, res) {
     
@@ -104,8 +154,9 @@ class ProductoController{
     
     }
 }
-/*
-const findByTexto = async (req, res) => {
+
+//Buscar productos por texto
+    async findByTexto(req, res) {
     
     try{
 
@@ -115,8 +166,7 @@ const findByTexto = async (req, res) => {
             $or: [
                 { nombre: regex },
                 { descripcion: regex },
-                { categoria: regex },
-                { marca: regex}
+                { categoria: regex }
             ]
         });
 
@@ -135,7 +185,8 @@ const findByTexto = async (req, res) => {
     }
 }
 
-const ordenarPorPrecio = async (req, res) => {
+//Ordenar productos por precio
+    async ordenarPorPrecio(req, res) {
     
     try{
         // .sort({ precio: 1 }) -> Orden ascendente (de más barato a más caro)
@@ -154,7 +205,118 @@ const ordenarPorPrecio = async (req, res) => {
     }
 }
 
-;*/
-}
+//Modificar producto
+    async updateProduct(req, res) {
+        try{
 
+            //Campo Id de producto necesario para cambiar datos del producto
+            const id = req.body;
+            
+            if(!id){
+                return res.status(400).json({
+                    error: 'Id del producto es obligatorios.'
+                });
+            }
+
+            //Comprobar que el usuario que quiere modificar producto es administrador
+            const rolActual = req.user.rol;
+            
+            if (rolActual !== "ADMINISTRADOR"){
+                return res.status(401).json({error: "Debes tener permisos de administrador para modificar un producto a la base de datos."})
+            }
+            
+            //Busca el producto(OBJETO) que se quiere actualizar por el id
+            const productoActualizar = await Producto.findOne({ _id: id});
+            
+            //Si el producto no se encuentra, lanza un error
+            if(!productoActualizar){
+                return res.status(400).json({error: "Producto no encontrado."})
+            }
+
+            const {nombre, categoria, precio, talla, cantidad} = req.body;
+            console.log(categoria)
+            if(nombre !== undefined) {
+                productoActualizar.set("nombre", nombre);
+            }
+            
+            if(categoria !== undefined) {
+                productoActualizar.set("categoria", categoria);
+            }
+
+            if(precio !== undefined) {
+                productoActualizar.set("precio", precio);
+            }
+            
+            // Si se envía cantidad (y opcionalmente talla), actualizamos ese elemento de stock
+            if (cantidad !== undefined) {
+                const nuevaCantidad = Number(cantidad);
+                if (!Number.isFinite(nuevaCantidad) || nuevaCantidad < 0) {
+                    return res.status(400).json({
+                        error: 'La cantidad debe ser un número mayor o igual que 0.'
+                    });
+                }
+
+                if (talla !== undefined) {
+                    const tallaNum = Number(talla);
+                    const itemStock = productoActualizar.stock.find((s) => s.talla === tallaNum);
+
+                    /*if (!itemStock) {
+                        return res.status(404).json({
+                            error: 'Esa talla no existe en el producto.'
+                        });
+                    }*/
+
+                    itemStock.cantidad = nuevaCantidad;
+            
+                } else if (productoActualizar.stock.length === 1) {
+        // Si el producto solo tiene una talla y no mandan talla, se actualiza esa
+                    productoActualizar.stock[0].cantidad = nuevaCantidad;
+                } else {
+                    return res.status(400).json({
+                        error: 'Debes indicar la talla porque el producto tiene varias.'
+                    });
+                }
+
+            }
+
+            const productoActualizado = await productoActualizar.save();
+            console.log(productoActualizado)
+            //Si todo bien, realiza cambios en el producto
+            return res.status(200).json({
+                mensaje: "Producto cambiado correctamente",
+                productoActualizado
+            })
+
+        }catch (error){
+
+            console.error('Fallo al modificar el producto:', error);
+            return res.status(500).json({ error: 'Error interno del servidor al modificar el producto.' });
+        }
+    }
+
+
+    async deleteProduct(req, res) {
+        try {
+            const { id } = req.body;
+            const rolActual = req.user.rol;
+
+             if(!id){
+                return res.status(400).json({error: "Producto no es valido."})
+            }
+           
+            
+            if(rolActual !== "ADMINISTRADOR"){
+                return res.status(405).json({ error: "Debes ser Administrador para eliminar el producto."})
+            }
+
+            const resultado = await Producto.findOneAndDelete({_id: id});
+
+            return res.status(200).json({mensaje: 'Producto eliminado correctamente.'});
+
+        } catch (error) {
+            console.error('Fallo al buscar el producto por ID:', error);
+            return res.status(500).json({ error: 'Error interno del servidor al buscar el producto.' });
+        }
+    };
+}
 module.exports = new ProductoController();
