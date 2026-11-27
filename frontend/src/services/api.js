@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_URL || "/api/user";
+const BASE = import.meta.env.VITE_API_URL || "/api/user"; //direcion base
 
 //para obtener las rutas GET de backend
 export async function apiGet(path){ 

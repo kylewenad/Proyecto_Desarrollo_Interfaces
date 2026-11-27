@@ -1,27 +1,29 @@
-import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useState } from "react";//Guaradar info que puede cambiar
+import { useAuth } from "../context/AuthContext"; //para acceder a nuestras herramientas de autentificacion
 import { useNavigate } from "react-router-dom";
 import "../styles/components/form.css";
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login } = useAuth(); //llama a la funcion login de authcontext
   const navigate = useNavigate();
 
+  //los estados 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(""); // para guardar posible mensaje de error
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
+  const onSubmit = async (e) => { // lo que ocurre al pulsar entrar
+    e.preventDefault(); // evita que el navegador haga el comportamiento habitual
+    setError(""); // borra el mensaje anterior de error para sustituirlo por uno nuevo
 
-    const ok = await login(email, password);
+    const ok = await login(email, password); // esto llama a la funcion login de authcontext y devuelve verdadero o falso
 
     if (!ok) {
-      setError("Credenciales inválidas");
+      setError("Credenciales inválidas"); // compruba si hay errores
       return;
     }
 
+    //comprobamos si el usuario es admin
     const usuarioGuardado = JSON.parse(
       localStorage.getItem("user")
     );

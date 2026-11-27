@@ -1,9 +1,8 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import profile_img from "../assets/profile_img.png"
-import navbarUser from "../components/NavabrUser"
 import '../styles/profile.css';
 import { useAuth } from "../context/AuthContext"; 
-import Navbar from "../components/NavabrUser";
+
 
 export default function Profile() {
   const { user, logout } = useAuth();
