@@ -7,6 +7,31 @@ const ROLES = ["CLIENTE", "EMPLEADO", "ADMINISTRADOR"];
 
 class UsuarioController{
     
+    async findAll (req, res) {
+        
+        try {
+               
+            const rolActual = req.user.rol;
+            
+            if(rolActual !== "ADMINISTRADOR"){
+                return res.status(400).json({error: "Debes ser administrador."})
+            }
+            
+            const resultado = await Usuario.find();
+                  
+                return res.status(200).json({
+                    mensaje: 'Usuarios encontrados.',
+                    total: resultado.length,
+                    resultados: resultado
+                });
+                
+            } catch (error) {
+                console.error('Fallo al buscar los Usuarios:', error);
+                return res.status(500).json({ error: 'Error interno del servidor al buscar los usuarios.' });
+            }
+        };
+    
+    
     //Crear usuario
     async signUp(req,res)  {
         
@@ -107,7 +132,7 @@ class UsuarioController{
 
     }
         
-            
+             
      //Obtener Datos de usuario    
     async getProfile(req, res){
 

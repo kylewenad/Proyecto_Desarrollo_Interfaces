@@ -97,14 +97,21 @@ Fronted:
 
 
 
+# API Usuarios, productos, pedidos y tickets
 
-Backend:
-    Requisitos:
-        Node.js Instalado
+API REST construida con Node.js, Express y MongoDB (Mongoose) para gestionar el catálogo 
+de una tienda online de zapatos, con sistema de tickets y control de roles.
 
-    Comenzar proyecto backend:
-    - npm init -y
-    - npm install express
-    - node
 
-    npx nodemon
+## Requisitos
+
+    - Node.js instalado. Comprobación: 'node v-', 'npm -v'.
+    - MongoDB instalado.
+
+## Configuración
+
+    Instalar dependencias en el backend del proyecto:
+        npm install express mongoose dotenv jsonwebtoken
+        npm install -D nodemon 
+        
+        
