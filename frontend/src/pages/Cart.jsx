@@ -7,7 +7,7 @@ export default function Cart() {
 
   const [productos, setProductos] = useState(() => {
     const carritoGuardado = localStorage.getItem("carrito");
-    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+    return carritoGuardado ? JSON.parse(carritoGuardado) : []; // Si carrito tiene datos los usamos si no array vacio
   });
 
   // Guardar los cambios del carrito

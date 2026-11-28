@@ -15,7 +15,7 @@ export default function App() {
     <>
       {!user ? (
         <Navbar />
-      ) : user.rol === "admin" ? (
+      ) : user.rol === "ADMINISTRADOR" ? (
         <NavbarAdmin />
       ) : (
         <NavbarUser />

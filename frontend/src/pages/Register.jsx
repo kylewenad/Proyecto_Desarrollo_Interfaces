@@ -1,18 +1,18 @@
 import { useState } from 'react'; 
 import { apiPost } from '../services/api';
-import Mocasines from '../assets/mocasines.png';
 import '../styles/components/form.css';
 
 export default function Register(){ 
+  //creamos los estados
 const [username,setName]=useState('');
 const [email,setEmail]=useState('');
 const [password,setPassword]=useState(''); 
-const [ok,setOk] = useState(false); 
+const [ok,setOk] = useState(false); // esto cuando creamos la cuenta se volvera true
 
-const onSubmit = async (e)=>{ 
+const onSubmit = async (e)=>{  //enviar formulario
   e.preventDefault(); 
   await apiPost('/crearUsuario', { username, email, password }); 
-  setOk(true); 
+  setOk(true); //cambiamos estado a true
 };return (
     <>
     <section className="section__form">
